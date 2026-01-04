@@ -1,0 +1,38 @@
+# --- Python Basics ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Virtual Environments ---
+venv/
+.venv/
+env/
+
+# --- Environment Variables & Secrets (CRITICAL) ---
+.env
+.env.local
+.env.*
+
+# --- Firebase Service Keys (CRITICAL) ---
+serviceAccountKey.json
+*.json  # Optional: strict safety to prevent leaking any JSON keys
+
+# --- Logs ---
+*.log
+logs/
+
+# --- Operating System Files ---
+.DS_Store
+Thumbs.db
+
+# --- IDE Settings ---
+.vscode/
+.idea/
+
+# --- Local Databases (if using SQLite) ---
+*.sqlite3
+*.db
+
+# --- Specific Tools ---
+cloudflared.exe
+cloudflared
