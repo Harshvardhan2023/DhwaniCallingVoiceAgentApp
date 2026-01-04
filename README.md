@@ -1,7 +1,7 @@
 # 🗣️ Dhwani - Voice-First AI Citizen Interface
 > **Bridging the Digital Divide with a Zero-Latency, Action-Oriented AI Voice Agent.**
 
-![Project Banner](https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop) 
+[![Watch the Demo](https://img.youtube.com/vi/VvWGgAr22GY/maxresdefault.jpg)](https://youtu.be/VvWGgAr22GY)
 
 ## 🚀 The Problem
 Government services remain inaccessible to millions of citizens due to:
@@ -63,3 +63,49 @@ It acts as an **Intelligent Agent**, not just a chatbot—connecting directly to
 ```bash
 git clone [https://github.com/Harshvardhan2023/DhwaniCallingVoiceAgentApp.git](https://github.com/Harshvardhan2023/DhwaniCallingVoiceAgentApp.git)
 cd DhwaniCallingVoiceAgentApp
+```
+### 2. Backend Setup
+```bash
+cd backend
+python -m venv venv
+# Windows:
+venv\Scripts\activate
+# Mac/Linux:
+# source venv/bin/activate
+
+pip install -r requirements.txt
+```
+#### Configure Environment Variables: Create a .env file in /backend:
+```bash
+GROQ_API_KEY=your_groq_key
+RETELL_API_KEY=your_retell_key
+FIREBASE_CREDENTIALS=serviceAccountKey.json
+SIP_TARGET=sip:username@sip.linphone.org
+```
+#### Run Server:
+```bash
+python main.py
+```
+### 3. Frontend Setup
+```bash
+cd ../dhwani-web
+npm install
+npm run dev
+```
+#### Access the app at http://localhost:3000.
+
+---
+
+## 🔌 Integration Workflow (Data Flow)
+1. **User Speaks:** Audio streamed via WebSocket to **Retell AI**.
+2. **Transcription:** Retell sends text to **FastAPI Backend**.
+3. **Intelligence:** Backend queries **Groq (Llama 3)** for a response.
+4. **Action:** If a task is detected (e.g., "Check Status"), Backend triggers **n8n Webhook**.
+5. **Response:** Audio is synthesized (TTS) and streamed back to the user instantly.
+
+## 🛡️ Security
+* **Zero-Trust Tunneling:** Backend is exposed via **Cloudflare Tunnel**, keeping ports closed.
+* **Sovereign Data:** Citizen logs are processed on self-hosted instances (**n8n**), ensuring data privacy.
+
+## 👥 Team
+* **Harshvardhan Mehta** - Lead Developer
